@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definiton'
+define service ZAD_C_online_shop_sd {
+  expose ZAD_C_online_shop as Online_Shop;
+}

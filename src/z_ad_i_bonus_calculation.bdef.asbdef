@@ -1,0 +1,69 @@
+managed;
+with draft;
+
+define behavior for z_ad_i_bonus_calculation alias calculation
+implementation in class z_ad_bp_bonus_calculation unique
+persistent table zadbonusclc
+draft table zaddraftclc
+lock master total etag lastchangedat
+
+// Identity and Access Management: enable RAP managed authorization checks - checks the BonusVariants of underlying active entries
+// -> requires implementation of methods "get_instance_authorizations" and "get_global_authorizations"
+authorization master ( instance, global )
+
+{
+  create ( precheck );
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) id;
+  field ( mandatory ) EmployeeID, ValidityStartDate, ValidityEndDate, TargetAmount_V, TargetAmount_C, BonusVariant;
+  field ( readonly ) CreatedByUser, CreatedAt, LastChangedByUser, LastChangedAt, PerformanceIndicator,
+                        BonusAmount_C, BonusAmount_V, ActualRevenueAmount_V, ActualRevenueAmount_C, BonusAmount_W,
+                        BonusCategory, BonusScaling, TargetLowerLimit, TargetUpperLimit;
+
+// Identity and Access Management: authorization check for BonusVariant on save - checks the BonusVariants of draft entries
+  validation check_variant_authorization on save { field id, BonusVariant; }
+
+  validation checkTargetRevenue on save { field TargetAmount_V; }
+  validation checkBonusRate on save { field BonusRate_V; }
+  validation checkValidity on save { field ValidityStartDate, ValidityEndDate; }
+  validation checkBonusVariant on save { field BonusVariant; create; }
+  validation checkCustomFields on save { create; update; }
+
+  determination setUnits on modify { field BonusRate_V, TargetAmount_V; }
+
+  action calculateBonus result [1] $self;
+//  action checkConnectivity result [1] $self;
+  action checkMailNotification result [1] $self;
+
+  draft determine action Prepare {
+    validation check_variant_authorization;
+  }
+
+  mapping for zadbonusclc corresponding
+  {
+    ActualRevenueAmount_C = actualrevenueamount_c;
+    ActualRevenueAmount_V = actualrevenueamount_v;
+    BonusAmount_C         = bonusamount_c;
+    BonusAmount_V         = bonusamount_v;
+    BonusAmount_W         = bonusamount_w;
+    BonusRate_U           = bonusrate_u;
+    BonusRate_V           = bonusrate_v;
+    BonusVariant          = bonusvariant;
+    CreatedAt             = createdat;
+    CreatedBy             = createdby;
+    EmployeeID            = employeeid;
+    EmployeeName          = employeename;
+    id                    = id;
+    LastChangedAt         = lastchangedat;
+    LastChangedBy         = lastchangedby;
+    RawBonusAmount_C      = rawbonusamount_c;
+    RawBonusAmount_V      = rawbonusamount_v;
+    TargetAmount_C        = targetamount_c;
+    TargetAmount_V        = targetamount_v;
+    ValidityEndDate       = validityenddate;
+    ValidityStartDate     = validitystartdate;
+
+  }
+}

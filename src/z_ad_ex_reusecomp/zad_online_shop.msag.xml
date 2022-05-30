@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZAD_ONLINE_SHOP</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Message class for online shop</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAD_ONLINE_SHOP</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Error</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAD_ONLINE_SHOP</ARBGB>
+     <MSGNR>030</MSGNR>
+     <TEXT>Succesfully executed</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAD_ONLINE_SHOP</ARBGB>
+     <MSGNR>031</MSGNR>
+     <TEXT>Item selected</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAD_ONLINE_SHOP</ARBGB>
+     <MSGNR>032</MSGNR>
+     <TEXT>Executed from Application Job</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>
