@@ -15,11 +15,9 @@ ENDCLASS.
 CLASS ZCL_TEST_HTTP_SERVICE IMPLEMENTATION.
 
 
-  method IF_HTTP_SERVICE_EXTENSION~HANDLE_REQUEST.
-   response->set_text( get_html(  ) ).
-  endmethod.
-
   METHOD GET_HTML.
+
+  try.
      DATA(user_formatted_name) = cl_abap_context_info=>get_user_formatted_name( ).
     DATA(system_date) = cl_abap_context_info=>get_system_date( ).
 
@@ -31,6 +29,12 @@ CLASS ZCL_TEST_HTTP_SERVICE IMPLEMENTATION.
     |<p> | &&
     |</body> \n| &&
     |</html> | .
+    catch CX_ABAP_CONTEXT_INFO_ERROR into data(lX_ABAP_CONTEXT_INFO_ERROR).
+    ENDTRY.
   ENDMETHOD.
 
+
+  method IF_HTTP_SERVICE_EXTENSION~HANDLE_REQUEST.
+   response->set_text( get_html(  ) ).
+  endmethod.
 ENDCLASS.

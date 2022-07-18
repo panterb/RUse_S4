@@ -1,0 +1,4 @@
+define service ZUI_VARIANTTABLE {
+  expose ZC_VARIANTTABLE_S as VariantTableAll;
+  expose ZC_VARIANTTABLE as VariantTable;
+}

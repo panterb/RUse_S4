@@ -76,11 +76,11 @@ CLASS lhc_zhb_i_online_online_shop IMPLEMENTATION.
                       %target = VALUE #(
                                        (  %cid                            = 'My%ItemCID_1'
                                           plant                           = '1010'
-                                          purchaserequisitionitemtext     = 'PAAS API Test 20.05'
+                                          purchaserequisitionitemtext     = 'PAAS API Test 08.07.2022'
                                             accountassignmentcategory     = 'U'
-                                          requestedquantity               = '9.00'
+                                          requestedquantity               = '8.00'
                                           baseunit                        = 'EA'
-                                          purchaserequisitionprice        = '12.00'
+                                          purchaserequisitionprice        = '13.00'
                                           purreqnitemcurrency             = 'EUR'
                                           materialgroup                   = 'A001'
                                           purchasinggroup                 = '001'
@@ -90,27 +90,27 @@ CLASS lhc_zhb_i_online_online_shop IMPLEMENTATION.
                                        )
                   )
                 )
-ENTITY purchaserequisitionitem
-
+ ENTITY purchaserequisitionitem
 CREATE BY \_purchasereqnacctassgmt
     FIELDS ( CostCenter
              GLAccount
              Quantity
              BaseUnit )
     WITH VALUE #( (   %cid_ref = 'My%ItemCID_1'
-                      %target  = VALUE #( ( CostCenter   = 'JMW-COST'
+                      %target  = VALUE #( ( %cid         = 'My%AccntCID_1'
+                                            CostCenter   = 'JMW-COST'
                                             GLAccount    = '0000400000' ) ) ) )
 CREATE BY \_purchasereqnitemtext
    FIELDS ( plainlongtext )
    WITH VALUE #(  (   %cid_ref = 'My%ItemCID_1'
-                      %target  = VALUE #( (
+                      %target  = VALUE #( ( %cid         = 'My%TextCID_1'
                                           textobjecttype = 'B01'
                                           language       = 'E'
-                                          plainlongtext  = 'item text created from PAAS API 20.05 D048583'
-                                        ) (
+                                          plainlongtext  = 'Item text created from PAAS API 08.07.2022'
+                                        ) ( %cid         = 'My%TextCID_2'
                                           textobjecttype = 'B02'
                                           language       = 'E'
-                                          plainlongtext  = 'item2 text created from PAAS API 19.05'
+                                          plainlongtext  = 'Item2 text created from PAAS API 08.07.2022'
                                         ) )
               )   )
           REPORTED DATA(ls_pr_reported)
@@ -127,7 +127,7 @@ CREATE BY \_purchasereqnitemtext
       online_shops TYPE TABLE FOR UPDATE zad_i_online_shop,
       online_shop  TYPE STRUCTURE FOR UPDATE zad_i_online_shop.
 *      delete from zhb_online_shop UP TO 15 ROWS.
-    SELECT MAX( order_id ) FROM zad_online_shop INTO @DATA(max_order_id).
+    SELECT MAX( order_id ) FROM zad_online_shop INTO @DATA(max_order_id).  "#EC CI_NOWHERE.
     READ ENTITIES OF zad_i_online_shop IN LOCAL MODE
        ENTITY online_shop
         ALL FIELDS
@@ -152,7 +152,7 @@ CREATE BY \_purchasereqnitemtext
    FAILED   DATA(lt_failed_modify)
    REPORTED DATA(lt_reported_modify).
 
-* if a new laptop is ordered, trigger a new purschase requisition
+* if a new laptop is ordered, trigger a new purchase requisition
     IF lt_failed_modify IS INITIAL.
       MODIFY ENTITIES OF zad_i_online_shop IN LOCAL MODE
       ENTITY Online_Shop EXECUTE create_pr FROM CORRESPONDING #( keys )

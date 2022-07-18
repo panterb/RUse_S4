@@ -12,18 +12,20 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_apj_shop_online_jobtemp IMPLEMENTATION.
+CLASS ZAD_CL_APJ_SHOP_ONLINE_JOBTEMP IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
-    CONSTANTS lc_catalog_name      TYPE cl_apj_dt_create_content=>ty_catalog_name  VALUE 'ZAD_ONLINE_SHOP_JOB2'.
+    CONSTANTS lc_catalog_name      TYPE cl_apj_dt_create_content=>ty_catalog_name  VALUE 'ZAD_ONLINE_SHOP_JOB_DEMO_BA'.
     CONSTANTS lc_catalog_text      TYPE cl_apj_dt_create_content=>ty_text          VALUE 'Online Shop App for Job Template'.
     CONSTANTS lc_class_name        TYPE cl_apj_dt_create_content=>ty_class_name    VALUE 'ZAD_CL_APJ_ONLINE_SHOP'.
 
-    CONSTANTS lc_template_name     TYPE cl_apj_dt_create_content=>ty_template_name VALUE 'ZAD_ONLINE_SHOP_JOB_TEMP2'.
+    CONSTANTS lc_template_name     TYPE cl_apj_dt_create_content=>ty_template_name VALUE 'ZAD_ONLINE_SHOP_JOB_TEMP_DEMO_BA'.
     CONSTANTS lc_template_text     TYPE cl_apj_dt_create_content=>ty_text          VALUE 'Job Template for Online Shop App'.
 
     CONSTANTS lc_transport_request TYPE cl_apj_dt_create_content=>ty_transport_request VALUE 'FHJK900110'.
-    CONSTANTS lc_package           TYPE cl_apj_dt_create_content=>ty_package           VALUE 'Z_AD_EX_REUSECOMP'.
+    CONSTANTS lc_package           TYPE cl_apj_dt_create_content=>ty_package           VALUE 'Z_AD_DEMO_BOOTCAMP'.
 
     DATA(lo_dt) = cl_apj_dt_create_content=>get_instance( ).
 

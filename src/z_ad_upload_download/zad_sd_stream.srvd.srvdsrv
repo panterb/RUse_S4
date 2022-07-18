@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definiton for Stream'
+define service ZAD_SD_STREAM {
+  expose ZAD_C_STREAM as Stream;
+}

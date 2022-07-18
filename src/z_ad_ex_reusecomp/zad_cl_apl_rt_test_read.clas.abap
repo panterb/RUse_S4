@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_apl_rt_test_read IMPLEMENTATION.
+CLASS ZAD_CL_APL_RT_TEST_READ IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     TRY.
         DATA(lo_filter) = cl_bali_log_filter=>create( ).

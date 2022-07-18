@@ -13,7 +13,7 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_apj_online_shop IMPLEMENTATION.
+CLASS ZAD_CL_APJ_ONLINE_SHOP IMPLEMENTATION.
 
 
  METHOD if_apj_dt_exec_object~get_parameters.

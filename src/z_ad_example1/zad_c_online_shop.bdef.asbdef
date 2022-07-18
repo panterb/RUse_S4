@@ -1,5 +1,5 @@
 projection;
-//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+strict(2); //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
 
 define behavior for ZAD_C_online_shop //alias <alias_name>
 {

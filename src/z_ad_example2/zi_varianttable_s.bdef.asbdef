@@ -1,0 +1,57 @@
+managed with additional save implementation in class ZBP_I_VARIANTTABLE_S unique;
+strict;
+with draft;
+
+define behavior for ZI_VariantTable_S alias VariantTableAll
+draft table ZAD_BUSCONF_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _VariantTable { create ( features : instance ); with draft; }
+}
+
+define behavior for ZI_VariantTable alias VariantTable
+persistent table ZAD_BUSCONF
+draft table ZAD_BUSCONF_D
+etag master Created
+lock dependent by _VariantTableAll
+authorization dependent by _VariantTableAll
+
+{
+  field ( mandatory : create )
+   Zadvariant;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   Zadvariant;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZAD_BUSCONF
+  {
+    Zadvariant = ZADVARIANT;
+    Created = CREATED;
+    ChangedOn = CHANGED_ON;
+  }
+
+  association _VariantTableAll { with draft; }
+
+  validation ValidateRecordChanges on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

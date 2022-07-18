@@ -32,6 +32,18 @@
      <MSGNR>032</MSGNR>
      <TEXT>Executed from Application Job</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAD_ONLINE_SHOP</ARBGB>
+     <MSGNR>033</MSGNR>
+     <TEXT>Executed from application Job - Offline ordering xlsx file processing</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAD_ONLINE_SHOP</ARBGB>
+     <MSGNR>035</MSGNR>
+     <TEXT>Bussiness ConfMan  maintenance not possible</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

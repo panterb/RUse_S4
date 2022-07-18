@@ -1,0 +1,25 @@
+projection;
+strict;
+use draft;
+
+define behavior for ZC_VariantTable_S alias VariantTableAll
+
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _VariantTable { create; with draft; }
+}
+
+define behavior for ZC_VariantTable alias VariantTable
+
+{
+  use update;
+  use delete;
+
+  use association _VariantTableAll { with draft; }
+}

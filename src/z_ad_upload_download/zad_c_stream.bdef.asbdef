@@ -1,0 +1,15 @@
+projection;
+strict(2);
+use draft;
+
+define behavior for ZAD_C_STREAM alias Stream
+{
+  use create;
+  use update;
+  use delete;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+}

@@ -1,11 +1,11 @@
 managed;
-with draft;
+strict(2);
+//with draft;
 
 define behavior for z_ad_i_bonus_calculation alias calculation
 implementation in class z_ad_bp_bonus_calculation unique
 persistent table zadbonusclc
-draft table zaddraftclc
-lock master total etag lastchangedat
+lock master
 
 // Identity and Access Management: enable RAP managed authorization checks - checks the BonusVariants of underlying active entries
 // -> requires implementation of methods "get_instance_authorizations" and "get_global_authorizations"
@@ -37,9 +37,7 @@ authorization master ( instance, global )
 //  action checkConnectivity result [1] $self;
   action checkMailNotification result [1] $self;
 
-  draft determine action Prepare {
-    validation check_variant_authorization;
-  }
+
 
   mapping for zadbonusclc corresponding
   {

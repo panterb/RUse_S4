@@ -1,0 +1,32 @@
+managed implementation in class zbp_ad_i_stream unique;
+strict(2);
+with draft;
+
+define behavior for ZAD_I_STREAM alias Stream
+persistent table ZAD_STREAM
+draft table ZAD_STREAM_D
+lock master total etag totaletag
+authorization master ( instance )
+etag master ChangedOn
+{
+  create;
+  update;
+  delete;
+  draft action ( features : instance ) Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  field ( numbering : managed, readonly ) Uuid;
+
+    mapping for zad_stream
+  {
+    Uuid = uuid;
+    description = description;
+    filecontent = file_Content;
+    filename = file_name;
+    MimeType = Mime_type;
+    ChangedOn = Changed_On;
+
+  }
+}

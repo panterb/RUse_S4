@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_apj_jobtemplate_ex1 IMPLEMENTATION.
+CLASS ZAD_CL_APJ_JOBTEMPLATE_EX1 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

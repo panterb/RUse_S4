@@ -11,7 +11,9 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_apl_dt_create_obj IMPLEMENTATION.
+CLASS ZAD_CL_APL_DT_CREATE_OBJ IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
     DATA(lo_log_object) = cl_bali_object_handler=>get_instance( ).

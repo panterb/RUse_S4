@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZC_VariantTable {
+  grant select on ZC_VariantTable
+  where INHERITING CONDITIONS FROM ENTITY ZI_VariantTable;
+}

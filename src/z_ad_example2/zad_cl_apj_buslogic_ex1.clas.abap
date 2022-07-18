@@ -13,7 +13,7 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_apj_buslogic_ex1 IMPLEMENTATION.
+CLASS ZAD_CL_APJ_BUSLOGIC_EX1 IMPLEMENTATION.
 
 
   METHOD if_apj_dt_exec_object~get_parameters.

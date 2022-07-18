@@ -11,7 +11,8 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_apl_rt_test_create IMPLEMENTATION.
+CLASS ZAD_CL_APL_RT_TEST_CREATE IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
 
@@ -34,5 +35,4 @@ CLASS zad_cl_apl_rt_test_create IMPLEMENTATION.
     ENDTRY.
 
   ENDMETHOD.
-
 ENDCLASS.

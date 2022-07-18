@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZI_VariantTable {
+  grant select on ZI_VariantTable
+  where ( ) = ASPECT pfcg_auth ( 'S_TABU_NAM', ACTVT = '03', TABLE = 'ZI_VARIANTTABLE' );
+}
