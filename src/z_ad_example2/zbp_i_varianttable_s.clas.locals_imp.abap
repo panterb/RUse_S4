@@ -97,28 +97,7 @@ CLASS LSC_ZI_VARIANTTABLE_S IMPLEMENTATION.
   METHOD SAVE_MODIFIED.
     READ TABLE update-VariantTableAll INDEX 1 INTO DATA(all).
 
-    " Check if application data do exist.
-    TRY.
-        SELECT * FROM zad_online_shop INTO @DATA(order). "#EC CI_NOWHERE.
-        ENDSELECT.
-        if order is not INITIAL.
-           DATA(lo_log) = cl_bali_log=>create( ).
-           lo_log->set_header( header = cl_bali_header_setter=>create( object = zad_if_online_shop_constants=>cs_apl-object-online_shop
-                                                                    subobject = zad_if_online_shop_constants=>cs_apl-subobject-online_shops
-                                                                    external_id = 'BusinessConfMan' ) ).
 
-           MESSAGE ID 'ZAD_ONLINE_SHOP' TYPE 'E' NUMBER '035' WITH sy-dbcnt  INTO DATA(lv_message).
-           lo_log->add_item( item = cl_bali_message_setter=>create_from_sy( ) ).
-
-           cl_bali_log_db=>get_instance( )->save_log( log = lo_log assign_to_current_appl_job = abap_false ).
-        endif.
-      CATCH cx_bali_runtime INTO DATA(l_runtime_exception).
-      RETURN.
-
-    ENDTRY.
-    " End check
-
-     IF order is INITIAL.
        IF all-TransportRequestID IS NOT INITIAL.
          lhc_rap_tdat_cts=>get( )->record_changes(
                                   transport_request = all-TransportRequestID
@@ -126,7 +105,7 @@ CLASS LSC_ZI_VARIANTTABLE_S IMPLEMENTATION.
                                   update            = REF #( update )
                                   delete            = REF #( delete ) ).
        ENDIF.
-    ENDIF.
+
   ENDMETHOD.
   METHOD CLEANUP_FINALIZE.
   ENDMETHOD.
@@ -163,25 +142,6 @@ CLASS LHC_ZI_VARIANTTABLE IMPLEMENTATION.
          iv_objecttype = cl_bcfg_cd_reuse_api_factory=>simple_table )->is_editable( ) = abap_false.
       edit_flag = if_abap_behv=>fc-o-disabled.
     ENDIF.
-
-     " Check if application data do exist.
-    TRY.
-        SELECT * FROM zad_online_shop INTO @DATA(order). "#EC CI_NOWHERE.
-        ENDSELECT.
-        if order is not INITIAL.
-           DATA(lo_log) = cl_bali_log=>create( ).
-           lo_log->set_header( header = cl_bali_header_setter=>create( object = zad_if_online_shop_constants=>cs_apl-object-online_shop
-                                                                    subobject = zad_if_online_shop_constants=>cs_apl-subobject-online_shops
-                                                                    external_id = 'BusinessConfMan' ) ).
-
-           MESSAGE ID 'ZAD_ONLINE_SHOP' TYPE 'E' NUMBER '035' WITH sy-dbcnt  INTO DATA(lv_message).
-           lo_log->add_item( item = cl_bali_message_setter=>create_from_sy( ) ).
-           cl_bali_log_db=>get_instance( )->save_log( log = lo_log assign_to_current_appl_job = abap_false ).
-           edit_flag = if_abap_behv=>fc-o-disabled.
-        endif.
-      CATCH cx_bali_runtime INTO DATA(l_runtime_exception).
-     ENDTRY.
-    " End check
 
     result-%UPDATE = edit_flag.
     result-%DELETE = edit_flag.

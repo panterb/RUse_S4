@@ -24,7 +24,7 @@ CLASS ZAD_CL_APL_RT_TEST_READ IMPLEMENTATION.
         DATA(lv_timestamp_now) = utclong_current( ).
         DATA(lv_timestamp_minus_1_hour) = utclong_add(
           val   = lv_timestamp_now
-          hours = '4-' ).
+          hours = '1-' ).
 
        lo_filter->set_time_interval(
           start_time = lv_timestamp_minus_1_hour

@@ -17,7 +17,7 @@ CLASS lad_Stream IMPLEMENTATION.
 
   ENDMETHOD.
 
-method get_instance_authorizations.
+METHOD get_instance_authorizations.
 ENDMETHOD.
 
 ENDCLASS.

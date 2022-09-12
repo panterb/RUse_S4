@@ -1,0 +1,8 @@
+CLASS zbp_zad_r_orderingtp_extension DEFINITION PUBLIC ABSTRACT FINAL for BEHAVIOR OF ZAD_R_ORDERINGTP.
+
+ENDCLASS.
+
+
+
+CLASS zbp_zad_r_orderingtp_extension IMPLEMENTATION.
+ENDCLASS.

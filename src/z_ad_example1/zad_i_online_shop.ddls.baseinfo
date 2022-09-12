@@ -6,7 +6,9 @@
 "ZAD_ONLINE_SHOP"
 ],
 "ASSOCIATED":
-[],
+[
+"ZAD_I_ONSHOP_ADD"
+],
 "BASE":
 [],
 "ANNO_REF":

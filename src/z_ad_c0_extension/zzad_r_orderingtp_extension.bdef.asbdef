@@ -1,0 +1,43 @@
+extension
+using interface ZAD_I_ORDERINGTP
+implementation in class zbp_zad_r_orderingtp_extension unique;
+
+extend behavior for ORDERING {
+ action zzad_update_deliverydate parameter Zad_input_date result [0..1] $self;
+ validation zzad_check_delivery_date on save { create; update; field Deliverydate; }
+ determination zzcalculate_order_id on modify { create; }
+ association _zz_ExtNodeYAP { create; with draft; }
+
+ extend draft determine action Prepare{
+    validation zzad_check_delivery_date;
+  }
+
+
+}
+
+
+define behavior for zad_r_extnodetp alias zz_ExtNode using zad_i_extnodetp
+persistent table zad_ext_node
+draft table zad_ext_node_d1
+etag master ChangedOn
+lock dependent
+authorization dependent
+
+{
+  update ( features : instance );
+  delete ( features : instance );
+
+
+  field ( readonly ) ID;
+
+  //action zz_update_freetextcomment result [1] $self;
+
+  association _Root { with draft; }
+
+  mapping for zad_ext_node
+  {
+    Id = ID;
+    FreeTextComment = free_text_comment;
+    ChangedOn = changed_on;
+  }
+}

@@ -29,7 +29,7 @@ CLASS ZAD_CL_APJ_XCO_XLSX IMPLEMENTATION.
 
     DATA(lo_dt) = cl_apj_dt_create_content=>get_instance( ).
 
-    " Create Job Catalogy Entry and Job Template:
+    " Create Job Catalog Entry
     TRY.
         lo_dt->create_job_cat_entry(
             iv_catalog_name       = lc_catalog_name
@@ -52,6 +52,8 @@ CLASS ZAD_CL_APJ_XCO_XLSX IMPLEMENTATION.
       IMPORTING
         et_parameter_val = lt_parameters
     ).
+
+    "Create Job Template
     TRY.
         lo_dt->create_job_template_entry(
             iv_template_name     = lc_template_name

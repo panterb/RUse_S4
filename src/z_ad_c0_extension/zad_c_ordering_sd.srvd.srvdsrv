@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definiton for Ordering'
+@AbapCatalog.extensibility.extensible: true
+define service ZAD_C_ORDERING_SD {
+  expose ZAD_C_ORDERING;
+}

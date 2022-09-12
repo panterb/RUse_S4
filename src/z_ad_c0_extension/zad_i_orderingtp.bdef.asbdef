@@ -1,0 +1,20 @@
+interface;
+extensible;
+use draft;
+
+define behavior for ZAD_I_ORDERINGTP alias Ordering
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  field ( suppress )   Cfield1 ;
+
+}

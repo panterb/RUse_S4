@@ -1,0 +1,12 @@
+projection;
+strict ( 2 );
+
+define behavior for z_ad_c_bonus_calculation //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action calculateBonus;
+  use action checkMailNotification;
+}

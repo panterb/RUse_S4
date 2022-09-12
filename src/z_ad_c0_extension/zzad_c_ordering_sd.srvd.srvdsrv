@@ -1,0 +1,3 @@
+extend service ZAD_C_ORDERING_SD with {
+  expose ZAD_C_extnodetp as ZZ_extnode;
+}

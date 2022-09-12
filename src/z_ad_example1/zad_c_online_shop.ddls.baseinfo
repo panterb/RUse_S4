@@ -3,7 +3,8 @@
 {
 "FROM":
 [
-"ZAD_I_ONLINE_SHOP"
+"ZAD_I_ONLINE_SHOP",
+"ZAD_I_ONSHOP_ADD"
 ],
 "ASSOCIATED":
 [],

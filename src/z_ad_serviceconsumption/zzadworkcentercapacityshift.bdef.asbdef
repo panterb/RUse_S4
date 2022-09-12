@@ -1,0 +1,6 @@
+ implementation abstract;
+ define behavior for ZZADWORKCENTERCAPACITYSHIFT
+  {
+  update;
+ delete;
+ }

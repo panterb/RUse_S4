@@ -1,0 +1,18 @@
+projection;
+strict ( 2 );
+extensible;
+use draft;
+
+define behavior for ZAD_C_ORDERING alias Ordering
+extensible
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+}

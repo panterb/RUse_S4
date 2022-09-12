@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_TABL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD02V>
+    <TABNAME>ZZAD_ORDERING_APPEND</TABNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <TABCLASS>APPEND</TABCLASS>
+    <SQLTAB>ZAD_ORDERING_EXT_INC</SQLTAB>
+    <DDTEXT>Extend append for ZAD_ORDERING</DDTEXT>
+    <MASTERLANG>E</MASTERLANG>
+    <EXCLASS>1</EXCLASS>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
+   </DD02V>
+   <DD03P_TABLE>
+    <DD03P>
+     <FIELDNAME>ZZ_CHAR_FIELD_YAP</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000020</INTLEN>
+     <DATATYPE>CHAR</DATATYPE>
+     <LENG>000010</LENG>
+     <MASK>  CHAR</MASK>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>ZZ_CURR_FIELD1_YAP</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000010</INTLEN>
+     <DATATYPE>CUKY</DATATYPE>
+     <LENG>000005</LENG>
+     <MASK>  CUKY</MASK>
+    </DD03P>
+    <DD03P>
+     <FIELDNAME>ZZ_CURR_FIELD2_YAP</FIELDNAME>
+     <ADMINFIELD>0</ADMINFIELD>
+     <INTTYPE>C</INTTYPE>
+     <INTLEN>000010</INTLEN>
+     <DATATYPE>CUKY</DATATYPE>
+     <LENG>000005</LENG>
+     <MASK>  CUKY</MASK>
+    </DD03P>
+   </DD03P_TABLE>
+  </asx:values>
+ </asx:abap>
+</abapGit>

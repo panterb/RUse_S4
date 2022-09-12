@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for bonus calculation'
+define service ZAD_D_BONUS_CALCULATION {
+  expose z_ad_i_bonus_calculation;
+}
