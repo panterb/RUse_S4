@@ -15,6 +15,6 @@ use etag
   use action Resume;
   use action Prepare;
 
-  field ( suppress )   Cfield1 ;
+  //field ( suppress )  product_price ;
 
 }

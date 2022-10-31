@@ -9,10 +9,11 @@ CLASS lsc_zzad_r_orderingtp_ext IMPLEMENTATION.
 ENDCLASS.
 
 CLASS lhc_extension_ORDERING DEFINITION INHERITING FROM cl_abap_behavior_handler.
-  PRIVATE SECTION.
+public section.
+    CONSTANTS:
+      validate_delivery_date   TYPE string VALUE 'VALIDATE_DELIVERY_DATE' ##NO_TEXT.
 
-    methods get_instance_features for instance FEATURES
-     importing it_keys request  requested_features for zz_ExtNode RESULT result.
+  PRIVATE SECTION.
 
       methods zzad_update_deliverydate for modify
        IMPORTING it_keys for action ordering~zzad_update_deliverydate RESULT result.
@@ -27,25 +28,6 @@ CLASS lhc_extension_ORDERING DEFINITION INHERITING FROM cl_abap_behavior_handler
 ENDCLASS.
 
 CLASS lhc_extension_ORDERING IMPLEMENTATION.
-
-  method get_instance_features.
-   READ ENTITIES OF zad_i_orderingtp IN LOCAL MODE
-      ENTITY zz_ExtNode
-        FIELDS ( FreeTextComment )
-        WITH CORRESPONDING #( it_keys )
-        RESULT DATA(lt_results)
-      FAILED failed.
-
-    result = VALUE #(
-        FOR results IN lt_results
-        LET enabled = if_abap_behv=>fc-o-enabled  IN
-        (
-          %tky = results-%tky
-          %update = enabled
-          %delete = enabled
-        )
-      ).
-  ENDMETHOD.
 
   method  zzad_update_deliverydate.
 
@@ -69,6 +51,31 @@ CLASS lhc_extension_ORDERING IMPLEMENTATION.
   ENDMETHOD.
 
   method zzad_check_delivery_date.
+
+         data:
+            online_shops TYPE TABLE FOR UPDATE zad_i_orderingtp,
+            online_shop  TYPE STRUCTURE FOR UPDATE zad_i_orderingtp.
+            READ ENTITIES OF zad_i_orderingtp IN LOCAL MODE
+             ENTITY Ordering
+              ALL FIELDS
+                WITH CORRESPONDING #( it_keys )
+                RESULT DATA(lt_online_shop_result)
+            FAILED    DATA(lt_failed)
+            REPORTED  DATA(lt_reported).
+
+
+          LOOP AT lt_online_shop_result INTO DATA(online_shop_read).
+            online_shop = CORRESPONDING #( online_shop_read ).
+                if online_shop_read-Deliverydate = '00000000'.
+                  APPEND VALUE #( %tky        = online_shop_read-%tky
+                      %state_area = validate_delivery_date
+                      %msg        = NEW zad_cx_ordering( textid      = zad_cx_ordering=>date_invalid )
+                      %element-Deliverydate = if_abap_behv=>mk-on
+                      ) TO reported-ordering .
+
+
+                endif.
+    ENDLOOP.
 
 
  ENDMETHOD.

@@ -62,7 +62,7 @@
    <TABL_EXTRAS>
     <TDDAT>
      <TABNAME>ZAD_EXT_NODE</TABNAME>
-     <CCLASS>CUS_DEV_SUP_RO</CCLASS>
+     <CCLASS>CUS_DEV_SUP_DA</CCLASS>
     </TDDAT>
    </TABL_EXTRAS>
   </asx:values>

@@ -3,17 +3,5 @@ extension for projection;
 extend behavior for Ordering {
 
 use action zzad_update_deliverydate;
-use association _zz_ExtNodeYAP { create; with draft; }
 
-}
-
-define behavior for zad_c_extnodetp alias zz_ExtNOde_C_View
-{
-  use update;
-  use delete;
-
-
-  //use action z_update_freetextcomment;
-
-  use association _Root { with draft; }
 }

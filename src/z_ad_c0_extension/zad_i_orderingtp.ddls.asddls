@@ -1,5 +1,5 @@
 @AbapCatalog.viewEnhancementCategory: [#PROJECTION_LIST]
-@AbapCatalog.extensibility:{ extensible: true, dataSources: ['Alias_R_ORDERINGTP'], elementSuffix: 'YAP', 
+@AbapCatalog.extensibility:{ extensible: true, dataSources: ['Alias_R_ORDERINGTP'], elementSuffix: 'ZSH', 
                              quota:{ maximumBytes: 1000, maximumFields: 100 } }
 @AbapCatalog.extensibility.allowNewCompositions
 @AccessControl.authorizationCheck: #NOT_REQUIRED
@@ -17,7 +17,7 @@ define root view entity ZAD_I_ORDERINGTP provider contract transactional_interfa
    Ordereditem as Ordereditem,
    Deliverydate       as Deliverydate,  
    Creationdate       as Creationdate,
-   Cfield1            as Cfield1,
+   product_price      as product_price,
    Lastchangedat      as Lastchangedat,
    Curr1              as Curr1
 }

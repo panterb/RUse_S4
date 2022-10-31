@@ -10,9 +10,9 @@
 }
 
 define view entity ZAD_R_EXTNODE as select from zad_ext_node 
-  association to parent ZAD_R_ORDERINGTP      as _Root     on  $projection.Id = _Root.Key1  
+//  association to parent ZAD_R_ORDERINGTP      as _Root     on  $projection.Id = _Root.Key1  
 {  
    key id as Id,
-   changed_on,
-   _Root
+   changed_on
+ //  _Root
 }

@@ -6,13 +6,9 @@
 "ZAD_R_ORDERINGTP"
 ],
 "ASSOCIATED":
-[
-"ZAD_C_EXTNODETP"
-],
+[],
 "BASE":
-[
-"ZAD_R_ORDERINGTP"
-],
+[],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":

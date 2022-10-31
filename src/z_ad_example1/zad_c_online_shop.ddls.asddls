@@ -19,7 +19,7 @@ define root view entity ZAD_C_online_shop
                                    position:        10 }      ]
   key Order_Uuid,
       @UI: { lineItem:       [ { position: 10,label: 'Order ID', importance: #HIGH } ],
-               identification: [ { position: 10, label: 'order id' } ] }
+               identification: [ { position: 10, label: 'Order Id' } ] }
       @Search.defaultSearchElement: true
       //@UI.hidden: true
       Order_Id,
@@ -28,13 +28,13 @@ define root view entity ZAD_C_online_shop
       @Search.defaultSearchElement: true
       Ordereditem,
 
-      @UI: { lineItem:       [ { position: 50,label: 'Delievery date', importance: #HIGH } ],
-      identification: [ { position: 50, label: 'Delievery date' } ] }
+      @UI: { lineItem:       [ { position: 50,label: 'Delivery date', importance: #HIGH } ],
+      identification: [ { position: 50, label: 'Delivery date' } ] }
       //@UI.hidden: true
       Deliverydate               as Deliverydate,
 
-      @UI: { lineItem:       [ { position: 50,label: 'Creation date', importance: #HIGH } ],
-             identification: [ { position: 50, label: 'Creation date' } ] }
+      @UI: { lineItem:       [ { position: 50,label: 'Creation Date', importance: #HIGH } ],
+             identification: [ { position: 50, label: 'Creation Date' } ] }
       //@UI.hidden: true
       Creationdate               as Creationdate,
 

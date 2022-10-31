@@ -1,18 +1,15 @@
 extend view entity  ZAD_R_ORDERINGTP with 
 
-association [0..1] to zad_i_ordering      as _zz_ExtensionYAP         on  $projection.Key1 = _zz_ExtensionYAP.Key1
-composition [0..1] of zad_r_extnodetp     as _zz_ExtNodeYAP
+association [0..1] to zad_i_ordering      as _zz_ExtensionZSH         on  $projection.Key1 = _zz_ExtensionZSH.Key1
+
 
 
 {
 
-    _zz_ExtNodeYAP,
-    _Extension.zz_char_field_yap as zz_char_field_yap,
-    _Extension.zz_curr_field1_yap as zz_curr_field1_yap,
-    _Extension.zz_curr_field2_yap as zz_curr_field2_yap,
-    
-    cast ( case when Alias_I_Ordering.Cfield1 = ''  then 'X' else ' ' end    
-                   as abap.char(1) )    as zz_display1_yap,
-     _zz_ExtensionYAP
+    _Extension.zz_char_field_zsh as zz_char_field_zsh,
+    _Extension.zz_curr_field1_zsh as zz_curr_field1_zsh,
+    _Extension.zz_curr_field2_zsh as zz_curr_field2_zsh,
+
+     _zz_ExtensionZSH
 }
 

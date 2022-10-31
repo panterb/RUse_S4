@@ -1,5 +1,5 @@
 @AbapCatalog.viewEnhancementCategory: [#PROJECTION_LIST]
-@AbapCatalog.extensibility:{ extensible: true, dataSources: ['Alias_R_OrderingTP','_Extension'], elementSuffix: 'YAP', 
+@AbapCatalog.extensibility:{ extensible: true, dataSources: ['Alias_R_OrderingTP','_Extension'], elementSuffix: 'ZSH', 
                              quota:{ maximumBytes: 1000, maximumFields: 100 } }
 @AbapCatalog.extensibility.allowNewCompositions
 @EndUserText.label: 'Ordering: UI Projection View'
@@ -44,17 +44,15 @@ define root view entity ZAD_C_ORDERING provider contract transactional_query as 
       
       @UI: { lineItem:       [ { position: 50,label: 'Delivery date', importance: #HIGH } ],
       identification: [ { position: 50, label: 'Delievery date' } ] }
-      //@UI.hidden: true
-      Deliverydate       as Deliverydate,
+       Deliverydate       as Deliverydate,
       
       @UI: { lineItem:       [ { position: 50,label: 'Creation date', importance: #HIGH } ],
              identification: [ { position: 50, label: 'Creation date' } ] }
-      //@UI.hidden: true
-      Creationdate       as Creationdate,
+       Creationdate       as Creationdate,
   
-      @UI: { lineItem:       [ { position: 50,label: 'Cfield1', importance: #HIGH } ],
-             identification: [ { position: 50, label: 'Cfield1' } ] }
-      Cfield1   as Cfield1,
+      @UI: { lineItem:       [ { position: 50,label: 'Price', importance: #HIGH } ],
+             identification: [ { position: 50, label: 'Price' } ] }
+      product_price   as product_price,
       
       @UI: { lineItem:       [ { position: 50,label: 'Currency', importance: #HIGH } ],
       identification: [ { position: 50, label: 'Currency' } ] }

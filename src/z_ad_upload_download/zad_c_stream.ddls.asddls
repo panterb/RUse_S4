@@ -3,8 +3,8 @@
 
 @ObjectModel.semanticKey: ['Description']
 
-@UI: { headerInfo: { typeName: 'Stream',
-                     typeNamePlural: 'Streams',
+@UI: { headerInfo: { typeName: 'File',
+                     typeNamePlural: 'File Upload',
                      title: { type: #STANDARD,
                               value: 'Description' } },
        presentationVariant: [{ sortOrder: [{ by: 'Uuid', direction: #ASC }], visualizations: [{type: #AS_LINEITEM}] }] }
@@ -14,7 +14,7 @@ define root view entity ZAD_C_STREAM provider contract transactional_query
 as projection on ZAD_I_STREAM 
 {
 
-          @UI.facet: [{ type: #IDENTIFICATION_REFERENCE, label: 'My Stream' }]
+          @UI.facet: [{ type: #IDENTIFICATION_REFERENCE, label: 'My File' }]
 
   key     Uuid,
 

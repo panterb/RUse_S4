@@ -1,16 +1,17 @@
 managed implementation in class zbp_ad_i_online_shop unique;
-strict(2);
-define behavior for Zad_I_ONLINE_SHOP alias online_shop
+strict ( 2 );
+define behavior for ZAD_I_ONLINE_SHOP alias online_shop
 with additional save
-persistent table ZAD_ONLINE_SHOP
+persistent table zad_online_shop
 lock master
 authorization master ( instance )
 
 {
   field ( numbering : managed ) order_Uuid;
   field ( mandatory ) Ordereditem;
-  //field ( readonly ) Creationdate, order_id, deliverydate;
+//  field ( readonly ) Creationdate, order_id,  deliverydate;
   determination calculate_order_id on modify { create; }
+  validation validate_delivery_date on save { create; update; }
   internal action create_pr;
   create;
   update;

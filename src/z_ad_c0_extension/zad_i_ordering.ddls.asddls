@@ -3,7 +3,6 @@
 @AbapCatalog.extensibility.dataSources: ['_Extension'] 
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Ordering: Core View'
---@Metadata.ignorePropagatedAnnotations: true
 @AbapCatalog.extensibility.allowNewCompositions
 @Metadata.allowExtensions: true
 @ObjectModel.usageType:{ serviceQuality: #X, sizeCategory: #S, dataClass: #MIXED }
@@ -17,7 +16,7 @@ define view entity zad_i_ordering as select from ZAD_P_ORDERING
    key Key1 as Key1,
    Order_id as Order_Id,
    OrderedItem as Ordereditem,
-   Cfield1   as Cfield1,
+   product_price      as product_price,
    Deliverydate       as Deliverydate, 
    Creationdate       as Creationdate,
    Lastchangedat      as Lastchangedat,

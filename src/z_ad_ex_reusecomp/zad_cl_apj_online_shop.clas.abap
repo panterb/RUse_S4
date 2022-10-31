@@ -3,8 +3,8 @@ CLASS zad_cl_apj_online_shop DEFINITION
   FINAL
   CREATE PUBLIC .
 
-  PUBLIC SECTION.
 
+  PUBLIC SECTION.
     INTERFACES if_apj_dt_exec_object .
     INTERFACES if_apj_rt_exec_object .
   PROTECTED SECTION.
@@ -51,6 +51,7 @@ CLASS ZAD_CL_APJ_ONLINE_SHOP IMPLEMENTATION.
         lo_log->add_item( item = cl_bali_message_setter=>create_from_sy( ) ).
 
         cl_bali_log_db=>get_instance( )->save_log( log = lo_log assign_to_current_appl_job = abap_true ).
+
 
       CATCH cx_bali_runtime INTO DATA(l_runtime_exception).
 *        out->write( l_runtime_exception->get_text(  ) ).

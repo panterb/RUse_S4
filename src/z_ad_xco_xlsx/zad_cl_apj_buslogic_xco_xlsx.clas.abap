@@ -4,7 +4,6 @@ CLASS zad_cl_apj_buslogic_xco_xlsx DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-
     INTERFACES if_apj_dt_exec_object .
     INTERFACES if_apj_rt_exec_object .
   PROTECTED SECTION.
@@ -15,8 +14,7 @@ ENDCLASS.
 
 CLASS ZAD_CL_APJ_BUSLOGIC_XCO_XLSX IMPLEMENTATION.
 
-
- METHOD if_apj_dt_exec_object~get_parameters.
+METHOD if_apj_dt_exec_object~get_parameters.
     " Parameter Description for Application Jobs Template
     et_parameter_def = VALUE #(
         ( selname = 'P_DESCR' kind = if_apj_dt_exec_object=>parameter     datatype = 'C' length = 80 param_text = 'Description'   lowercase_ind = abap_true changeable_ind = abap_true )
