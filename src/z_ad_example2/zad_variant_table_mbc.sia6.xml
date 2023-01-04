@@ -43,13 +43,13 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Display Change Documents, Display, Change</VALUE>
+          <VALUE>Display, Display Change Documents, Change</VALUE>
           <VALUES>
            <item>
-            <LOW_VALUE>08</LOW_VALUE>
+            <LOW_VALUE>03</LOW_VALUE>
            </item>
            <item>
-            <LOW_VALUE>03</LOW_VALUE>
+            <LOW_VALUE>08</LOW_VALUE>
            </item>
            <item>
             <LOW_VALUE>02</LOW_VALUE>

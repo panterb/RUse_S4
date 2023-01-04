@@ -1,0 +1,5 @@
+@EndUserText.label: 'ZAD_SCM_ADVANCED_ANALYTICS_API'
+@OData.schema.name: 'AnalyticsService'
+define service ZAD_SCM_ADVANCED_ANALYTICS_API {
+ expose ZAARESULTS; 
+ } 

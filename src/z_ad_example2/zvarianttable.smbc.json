@@ -1,0 +1,20 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Business Configuration Maintenance Object",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZUI_VARIANTTABLE_O4",
+    "serviceName": "ZUI_VARIANTTABLE_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "VariantTableAll",
+    "name": "Variant table",
+    "configurationGroup": "",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {}
+  }
+}

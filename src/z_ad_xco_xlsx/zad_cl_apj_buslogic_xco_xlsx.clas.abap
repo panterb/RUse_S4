@@ -14,6 +14,7 @@ ENDCLASS.
 
 CLASS ZAD_CL_APJ_BUSLOGIC_XCO_XLSX IMPLEMENTATION.
 
+
 METHOD if_apj_dt_exec_object~get_parameters.
     " Parameter Description for Application Jobs Template
     et_parameter_def = VALUE #(
@@ -25,7 +26,6 @@ METHOD if_apj_dt_exec_object~get_parameters.
       ( selname = 'P_DESCR' kind = if_apj_dt_exec_object=>parameter     sign = 'I' option = 'EQ' low = 'Job Template for Online Shop' )
     ).
   ENDMETHOD.
-
 
 
   METHOD if_apj_rt_exec_object~execute.

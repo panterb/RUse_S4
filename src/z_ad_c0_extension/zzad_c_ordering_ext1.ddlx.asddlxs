@@ -1,0 +1,12 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZAD_C_ORDERING
+  with 
+{
+
+  @Consumption.valueHelpDefinition: [ {entity: {name: 'ZZAD_RESTRICTEDCURRENCY', element: 'Currency' }} ]
+  @EndUserText: { label: '!!!Restricted Currency' }
+  Curr1;
+  
+  }
+ 
+ 

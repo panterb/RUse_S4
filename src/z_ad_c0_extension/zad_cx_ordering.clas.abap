@@ -43,7 +43,9 @@ ENDCLASS.
 
 
 
-CLASS zad_cx_ordering IMPLEMENTATION.
+CLASS ZAD_CX_ORDERING IMPLEMENTATION.
+
+
  METHOD constructor ##ADT_SUPPRESS_GENERATION.
     super->constructor( previous = previous ).
 
@@ -58,5 +60,3 @@ CLASS zad_cx_ordering IMPLEMENTATION.
 
   ENDMETHOD.
 ENDCLASS.
-
-

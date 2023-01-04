@@ -1,0 +1,29 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'VariantTable', 
+    typeNamePlural: 'VariantTables', 
+    title: {
+      type: #STANDARD, 
+      label: 'Variant table', 
+      value: 'Zadvariant'
+    }
+  }
+}
+annotate view ZC_VariantTable with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_VariantTable', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Variant table', 
+    position: 1 
+  } ]
+  Zadvariant;
+}

@@ -1,0 +1,179 @@
+@Metadata.layer: #CORE
+
+@UI: {
+  headerInfo: { typeName: 'Bonus Calculation',
+                typeNamePlural: 'Bonus Calculations',
+                title : { value: 'EmployeeID',
+                          type: #STANDARD }
+      }
+//  presentationVariant: [ { sortOrder: [ { by: 'ID', direction: #DESC } ] } ]
+  }
+  
+annotate view z_ad_c_bonus_calculation
+  with 
+{
+  @UI.facet: [
+      { id: 'GeneralInformation', type: #COLLECTION, label: 'General Information', position: 1 }, //purpose: #STANDARD,
+      { id: 'BasisOfCalculation', type: #COLLECTION, label: 'Basis of Calculation',   position: 1 },
+      //{ id: 'Revenue', type: #COLLECTION, label: 'Revenue',  position: 5 },
+      { id: 'Bonus', type: #COLLECTION, label: 'Bonus',    position: 5 },
+      { id: 'User', parentId: 'GeneralInformation', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FGUSER', label: 'Administrative Data',  position: 20 },
+
+      { id: 'General', parentId: 'GeneralInformation', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FG',         label: 'Employee',    position: 5 },
+      { id: 'Target1', parentId: 'BasisOfCalculation', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FGTARGET1',  label: 'Amounts',      position: 10 },
+      { id: 'Target2', parentId: 'BasisOfCalculation', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FGTARGET2',  label: 'Validity',    position: 11 },
+      //{ id: 'Actual',  parentId: '2', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FGREVENUE',  label: 'Amount',      position: 20 },
+      { id: 'Variant', parentId: 'Bonus', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FGVARIANT',  label: 'Variant',     position: 25 },
+      
+      //{ id: 'Bonus1',  parentId: '4', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FGBONUS1',   label: 'Performance', position: 35 },
+      { id: 'Bonus2',  parentId: 'Bonus', type: #FIELDGROUP_REFERENCE, targetQualifier: 'FGBONUS2',   label: 'Amount',      position: 30 }
+  ]
+
+  @UI: {
+    lineItem:       [ { exclude: true },{ type: #FOR_ACTION, dataAction: 'calculate_bonus', label: 'Calculate Bonus' } ],
+    identification: [ { position:10, type: #FOR_ACTION, dataAction: 'calculateBonus', label: 'Calculate Bonus' }
+                      //,{ position:20, type: #FOR_ACTION, dataAction: 'checkConnectivity', label: 'Connectivity check' }
+                    ],
+    //fieldGroup:     [ {label: 'Calculate Bonus', type: #FOR_ACTION, dataAction: 'calculate_bonus',  invocationGrouping: #CHANGE_SET, position: 10, qualifier: 'FGREVENUE'} ]
+    fieldGroup:     [ {label: 'Connectivity Check', type: #FOR_ACTION, dataAction: 'checkConnectivity',  invocationGrouping: #CHANGE_SET, position: 10, qualifier: 'FG'},
+                      {label: 'Mail check', type: #FOR_ACTION, dataAction: 'checkMailNotification',  invocationGrouping: #CHANGE_SET, position: 11, qualifier: 'FG'} ]
+    }
+  ID;
+
+  @UI: {
+    lineItem:       [ { position: 20 
+//      ,semanticObjectAction: 'maintain' ,type: #WITH_INTENT_BASED_NAVIGATION
+     } ],
+    identification: [ { position: 20 } ],
+    fieldGroup:     [ { qualifier: 'FG', position: 10 }]
+  }
+  EmployeeID;
+  
+  @UI: {
+    lineItem:       [ { position: 40, label: 'Validity Start Date' } ],
+    identification: [ { position: 40, label: 'Validity Start Date' } ],
+    fieldGroup:     [ { qualifier: 'FGTARGET2', position: 10 }]
+  }
+  ValidityStartDate;
+
+  @UI: {
+    lineItem:       [ { position: 50, label: 'Validity End Date'} ],
+    identification: [ { position: 50, label: 'Validity End Date' } ],
+    fieldGroup:     [ { qualifier: 'FGTARGET2', position: 20 }]
+  }
+  ValidityEndDate;
+
+  @UI: {
+    lineItem:       [ { position: 60, label: 'Target Amount' } ],
+    identification: [ { position: 60, label: 'Target Amount' } ],
+    fieldGroup:     [ { qualifier: 'FGTARGET1', position: 5 }]
+  }
+  TargetAmount_V;
+
+  //  @UI: {
+  //    lineItem:       [ { position: 70, label: 'TargetAmount_V', importance: #HIGH } ],
+  //    identification: [ { position: 70, label: 'TargetAmount_V' } ],
+  //    fieldGroup:     [ { qualifier: 'FGTARGET', position: 30 }]
+  //}
+  //  TargetAmount_C;
+
+  @UI: {
+    lineItem:       [ { position: 80, label: 'Actual Revenue Amount ' } ],
+    identification: [ { position: 80, label: 'Actual Revenue Amount' } ],
+    fieldGroup:     [ { qualifier: 'FGTARGET1', position: 10 }]
+  }
+  ActualRevenueAmount_V;
+
+  //  @UI: {
+  //    lineItem:       [ { position: 90, label: 'ActualRevenueAmount_C', importance: #HIGH } ],
+  //    identification: [ { position: 90, label: 'ActualRevenueAmount_C' } ],
+  //    fieldGroup:     [ { qualifier: 'FGREVENUE', position: 30 }]
+  //}
+  //  ActualRevenueAmount_C;
+  
+  @UI: {
+    lineItem:       [ { position: 200, label: 'Bonus Variant' } ],
+    identification: [ { position: 200, label: 'Bonus Variant' } ],
+    fieldGroup:     [ { qualifier: 'FGVARIANT', position: 10 }],
+    selectionField: [ { position: 10 }]
+  }
+  BonusVariant;
+  
+  @UI: {
+//    lineItem:       [ { position: 100, label: 'Bonus Rate' } ],
+    identification: [ { position: 100, label: 'Bonus Rate' } ],
+    fieldGroup:     [ { qualifier: 'FGVARIANT', position: 20, hidden: #( HideRateSettings ) }]
+  }
+  BonusRate_V;
+  
+  @UI: {
+//    lineItem:       [ { position: 100, label: 'Bonus Rate' } ],
+    identification: [ { position: 110, label: 'Target Bonus Amount' } ],
+    fieldGroup:     [ { qualifier: 'FGVARIANT', position: 30, hidden: #( HideAmountSettings ) }]
+  }
+  RawBonusAmount_V;
+
+  @UI: {
+    lineItem:       [ { position: 130, label: 'Bonus Amount'} ],
+    identification: [ { position: 130, label: 'Bonus Amount' } ],
+    fieldGroup:     [ { qualifier: 'FGBONUS2', position: 31 }]
+  }
+  BonusAmount_V;
+
+  @UI: {  
+   // lineItem:       [ { position: 135, label: 'Bonus Amount in Words'} ],
+    identification: [ { position: 135, label: 'Bonus Amount in Words' } ],
+    fieldGroup:     [ { qualifier: 'FGBONUS2', position: 32 }]
+  }
+  BonusAmount_W;
+
+  //  @UI: {
+  //    lineItem:       [ { position: 120, label: 'Bonus Rate UoM', importance: #HIGH } ],
+  //    identification: [ { position: 120, label: 'Bonus Rate UoM' } ],
+  //    fieldGroup:     [ { qualifier: 'FGBONUS2', position: 30 }]
+  //  }
+  //  BonusRate_U;
+
+  //    @UI: {
+  //      lineItem:       [ { position: 140, label: 'Bonus Currency', importance: #HIGH } ],
+  //      identification: [ { position: 140, label: 'Bonus Currency' } ],
+  //      fieldGroup:     [ { qualifier: 'FGBONUS2', position: 30 }]
+  //  }
+  //    BonusAmount_C;
+
+  @UI: {
+    lineItem:       [ { position: 35, label: 'Performance Indicator', importance: #HIGH, criticality: 'PerformanceIndicator' } ],
+    identification: [ { position: 150, label: 'Performance Indicator', criticality: 'PerformanceIndicator' } ],
+    fieldGroup:     [ { qualifier: 'FGTARGET1', position: 20, criticality: 'PerformanceIndicator', label: 'Performance Indicator'}]
+  }
+  PerformanceIndicator;
+
+  @UI: {
+  //    lineItem:       [ { position: 160, label: 'Created By' } ],
+    identification: [ { position: 150, label: 'Created By' } ],
+    fieldGroup:     [ { qualifier: 'FGUSER', position: 10 }]
+  }
+  CreatedByUser;
+
+  @UI: {
+  //    lineItem:       [ { position: 170, label: 'Created At' } ],
+    identification: [ { position: 150, label: 'Created At' } ],
+    fieldGroup:     [ { qualifier: 'FGUSER', position: 20 }]
+  }
+  CreatedAt;
+
+  @UI: {
+  //    lineItem:       [ { position: 180, label: 'Last Changed By' } ],
+    identification: [ { position: 150, label: 'Last Changed By' } ],
+    fieldGroup:     [ { qualifier: 'FGUSER', position: 30 }]
+  }
+  LastChangedByUser;
+
+  @UI: {
+  //    lineItem:       [ { position: 190, label: 'Last Changed At' } ],
+    identification: [ { position: 150, label: 'Last Changed At' } ],
+    fieldGroup:     [ { qualifier: 'FGUSER', position: 40 }]
+  }
+  LastChangedAt;
+  
+}

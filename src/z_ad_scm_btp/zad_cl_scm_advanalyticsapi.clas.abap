@@ -24,7 +24,8 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_scm_advanalyticsapi IMPLEMENTATION.
+CLASS ZAD_CL_SCM_ADVANALYTICSAPI IMPLEMENTATION.
+
 
 method get_response.
 
@@ -69,6 +70,7 @@ lo_http_client->get_http_request( )->set_header_field( i_name = 'Accept' i_value
 
 ENDMETHOD.
 
+
 METHOD if_oo_adt_classrun~main.
 
 *  DATA lt_workcenters TYPE TABLE OF ZZADWORKCENTERPOOLEDCAPACITY.
@@ -95,5 +97,4 @@ try.
 
 
 ENDMETHOD.
-
 ENDCLASS.

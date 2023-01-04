@@ -27,7 +27,8 @@ ENDCLASS.
 
 
 
-CLASS zad_cl_scm_workcenter IMPLEMENTATION.
+CLASS ZAD_CL_SCM_WORKCENTER IMPLEMENTATION.
+
 
 method get_workcenters.
 
@@ -73,6 +74,7 @@ lo_http_client = cl_web_http_client_manager=>create_by_http_destination( lo_dest
 
 ENDMETHOD.
 
+
 METHOD if_oo_adt_classrun~main.
 
   DATA lt_workcenters TYPE TABLE OF zzadworkcenterheader.
@@ -98,5 +100,4 @@ try.
     data(rs_business_data) = lt_workcenters.
 
 ENDMETHOD.
-
 ENDCLASS.

@@ -1,0 +1,26 @@
+@Metadata.layer: #CUSTOMER
+
+@UI: { headerInfo: {
+                     typeName: 'ExtensionNode',
+                     typeNamePlural: 'ExtensionNode',
+                     title: { type: #STANDARD, value: 'Id' }
+                   }
+     }
+     
+annotate view ZAD_C_extnodetp with 
+{
+   @UI.facet: [
+      {
+        id:            'ExtensionNode',
+        purpose:       #STANDARD,
+        type:          #IDENTIFICATION_REFERENCE,
+        label:         'Id',
+        position:      10 }  ]
+   ID;
+    
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @UI.multiLineText: true
+  FreeTextComment;
+}
